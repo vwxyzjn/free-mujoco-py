@@ -146,6 +146,7 @@ class custom_build_ext(build_ext):
 
 def fix_shared_library(so_file, name, library_path):
     """ Used to fixup shared libraries on Linux """
+    print("========hgahagha", so_file, name, library_path)
     subprocess.check_call(['patchelf', '--remove-rpath', so_file])
     ldd_output = subprocess.check_output(['ldd', so_file]).decode('utf-8')
 
@@ -272,8 +273,8 @@ class LinuxCPUExtensionBuilder(MujocoExtensionBuilder):
     def _build_impl(self):
         so_file_path = super()._build_impl()
         # Removes absolute paths to libraries. Allows for dynamic loading.
-        fix_shared_library(so_file_path, 'libmujoco210.so', 'libmujoco210.so')
-        fix_shared_library(so_file_path, 'libglewosmesa.so', 'libglewosmesa.so')
+        fix_shared_library(so_file_path, 'libmujoco210.so', f'{os.environ["LD_LIBRARY_PATH"]}/libmujoco210.so')
+        fix_shared_library(so_file_path, 'libglewosmesa.so', f'{os.environ["LD_LIBRARY_PATH"]}/libglewosmesa.so')
         return so_file_path
 
 
