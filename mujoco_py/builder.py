@@ -146,7 +146,6 @@ class custom_build_ext(build_ext):
 
 def fix_shared_library(so_file, name, library_path):
     """ Used to fixup shared libraries on Linux """
-    print("========hgahagha", so_file, name, library_path)
     subprocess.check_call(['patchelf', '--remove-rpath', so_file])
     ldd_output = subprocess.check_output(['ldd', so_file]).decode('utf-8')
 
