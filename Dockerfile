@@ -36,12 +36,12 @@ RUN curl -o /usr/local/bin/patchelf https://s3-us-west-2.amazonaws.com/openai-sc
 
 ENV LANG C.UTF-8
 
-RUN mkdir -p /root/.mujoco \
-    && wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz -O mujoco.tar.gz \
-    && tar -xf mujoco.tar.gz -C /root/.mujoco \
-    && rm mujoco.tar.gz
+# RUN mkdir -p /root/.mujoco \
+#     && wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz -O mujoco.tar.gz \
+#     && tar -xf mujoco.tar.gz -C /root/.mujoco \
+#     && rm mujoco.tar.gz
 
-ENV LD_LIBRARY_PATH /root/.mujoco/mujoco210/bin:${LD_LIBRARY_PATH}
+# ENV LD_LIBRARY_PATH /root/.mujoco/mujoco210/bin:${LD_LIBRARY_PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
 COPY vendor/Xdummy /usr/local/bin/Xdummy
@@ -51,6 +51,8 @@ RUN chmod +x /usr/local/bin/Xdummy
 COPY ./vendor/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
 
 WORKDIR /mujoco_py
+COPY download_mujoco.sh download_mujoco.sh
+RUN bash download_mujoco.sh
 # Copy over just requirements.txt at first. That way, the Docker cache doesn't
 # expire until we actually change the requirements.
 COPY ./requirements.txt /mujoco_py/
