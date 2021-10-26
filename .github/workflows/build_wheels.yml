@@ -38,9 +38,7 @@ jobs:
               virtualenv \
               wget \
               xpra \
-              xserver-xorg-dev \
-              && apt-get clean \
-              && rm -rf /var/lib/apt/lists/*
+              xserver-xorg-dev
       - name: View poetry --help
         run: poetry install
       - name: View poetry --help
