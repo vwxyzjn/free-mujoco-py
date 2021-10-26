@@ -20,6 +20,8 @@ jobs:
         uses: abatilo/actions-poetry@v2.0.0
         with:
           poetry-version: ${{ matrix.poetry-version }}
+      - name: Download mujoco
+        run: bash download_mujoco.sh
       - name: View poetry --help
         run: poetry install
       - name: View poetry --help
