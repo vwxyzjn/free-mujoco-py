@@ -22,7 +22,7 @@ jobs:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Download mujoco
         run: bash download_mujoco.sh
-      - name: Install dependencies
+      - name: Install ubuntu dependencies
         run:  |
           sudo apt-get update -q \
               && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
@@ -39,9 +39,11 @@ jobs:
               wget \
               xpra \
               xserver-xorg-dev
-      - name: View poetry --help
+      - name: Install poetry dependencies
         run: poetry install
-      - name: View poetry --help
+      - name: Build wheels
         run: poetry build
-      - name: View poetry --help
-        run: ls build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: wheels
+          path: dist
