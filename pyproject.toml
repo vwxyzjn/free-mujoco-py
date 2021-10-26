@@ -6,7 +6,11 @@ authors = ["Costa Huang <costa.huang@outlook.com>"]
 packages = [
     {include = "mujoco_py"}
 ]
-include = ['mujoco_py/binaries/**/*', 'mujoco_py/generated/cymj*']
+include = [
+    'mujoco_py/binaries/**/*',
+    'mujoco_py/cymj.c',
+    'mujoco_py/generated/_pyxbld_2.0.2.13_39_linuxcpuextensionbuilder/**/*'
+]
 build = 'build.py'
 
 [tool.poetry.dependencies]

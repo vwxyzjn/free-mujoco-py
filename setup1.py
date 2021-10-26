@@ -31,7 +31,7 @@ class Build(DistutilsBuild):
 
 
 setup(
-    name='mujoco-py',
+    name='free-mujoco-py',
     version=__version__,  # noqa
     author='OpenAI Robotics Team',
     author_email='robotics@openai.com',
