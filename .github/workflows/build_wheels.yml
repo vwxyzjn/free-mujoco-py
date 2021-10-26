@@ -24,8 +24,8 @@ jobs:
         run: bash download_mujoco.sh
       - name: Install dependencies
         run:  |
-          apt-get update -q \
-              && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+          sudo apt-get update -q \
+              && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
               curl \
               git \
               libgl1-mesa-dev \
