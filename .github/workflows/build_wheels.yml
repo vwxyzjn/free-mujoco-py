@@ -21,6 +21,8 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: View poetry --help
+        run: poetry install
+      - name: View poetry --help
         run: poetry build
       - name: View poetry --help
         run: ls build
