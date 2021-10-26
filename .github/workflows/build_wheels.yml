@@ -42,7 +42,7 @@ jobs:
       - name: Install poetry dependencies
         run: poetry install
       - name: Build wheels
-        run: poetry run python setup1.py bdist_wheel
+        run: poetry build
       - uses: actions/upload-artifact@v2
         with:
           name: wheels

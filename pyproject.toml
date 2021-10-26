@@ -9,7 +9,7 @@ packages = [
 include = [
     'mujoco_py/binaries/**/*',
     'mujoco_py/cymj.c',
-    'mujoco_py/generated/_pyxbld_2.0.2.13_39_linuxcpuextensionbuilder/**/*'
+    'mujoco_py/generated/**/*'
 ]
 build = 'build.py'
 
