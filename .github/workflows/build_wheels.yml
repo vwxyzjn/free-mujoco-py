@@ -22,6 +22,25 @@ jobs:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Download mujoco
         run: bash download_mujoco.sh
+      - name: Install dependencies
+        run:  |
+          apt-get update -q \
+              && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+              curl \
+              git \
+              libgl1-mesa-dev \
+              libgl1-mesa-glx \
+              libglew-dev \
+              libosmesa6-dev \
+              software-properties-common \
+              net-tools \
+              vim \
+              virtualenv \
+              wget \
+              xpra \
+              xserver-xorg-dev \
+              && apt-get clean \
+              && rm -rf /var/lib/apt/lists/*
       - name: View poetry --help
         run: poetry install
       - name: View poetry --help
