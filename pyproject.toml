@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "free-mujoco-py"
-version = "2.1.1"
+version = "2.1.6"
 description = ""
 authors = ["Costa Huang <costa.huang@outlook.com>"]
 packages = [
@@ -8,10 +8,10 @@ packages = [
 ]
 include = [
     'mujoco_py/binaries/**/*',
-    'mujoco_py/cymj.c',
-    'mujoco_py/generated/**/*'
+    # 'mujoco_py/cymj.c',
+    # 'mujoco_py/generated/**/*'
 ]
-build = 'build.py'
+# build = 'build.py'
 
 [tool.poetry.dependencies]
 python = ">=3.7.1,<3.11"
